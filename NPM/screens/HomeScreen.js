@@ -16,7 +16,7 @@ export default function HomeScreen({ catName }) {
       {/* no tasks*/}
       <View style={styles.content}>
         <Image  style={styles.clock}
-            source={require('./Icons/clock.png')}
+            source={require('../assets/clock.png')}
           />
         <Text style={styles.idleOne}>No tasks for today</Text>
         <Text style={styles.idleTwo}>You're all caught up! Add some tasks to get started.</Text>
@@ -25,17 +25,17 @@ export default function HomeScreen({ catName }) {
       {/* navigation bar*/}
       <View style={styles.navigation}>
         <Image
-          source={require('./Icons/home.png')}
+          source={require('../assets/home.png')}
           style={styles.homenavigation}
           resizeMode="contain"
         />
          <Image
-          source={require('./Icons/add.png')}
+          source={require('../assets/add.png')}
           style={styles.addnavigation}
           resizeMode="contain"
         />
          <Image
-          source={require('./Icons/inspire.png')}
+          source={require('../assets/inspire.png')}
           style={styles.inspirenavigation}
           resizeMode="contain"
         />
