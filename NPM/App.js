@@ -6,7 +6,7 @@ import { Text } from 'react-native';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import FeedScreen from './screens/NewTaskScreen';
+import FeedScreen from './screens/AddScreen';
 import HistoryScreen from './screens/HistoryScreen';
 import InspirationScreen from './screens/InspirationScreen';
 
