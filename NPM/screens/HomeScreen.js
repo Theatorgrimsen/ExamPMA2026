@@ -6,7 +6,6 @@ export default function HomeScreen({ catName }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
       
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Today's Tasks</Text>
@@ -20,25 +19,6 @@ export default function HomeScreen({ catName }) {
           />
         <Text style={styles.idleOne}>No tasks for today</Text>
         <Text style={styles.idleTwo}>You're all caught up! Add some tasks to get started.</Text>
-      </View>
-
-      {/* navigation bar*/}
-      <View style={styles.navigation}>
-        <Image
-          source={require('../assets/home.png')}
-          style={styles.homenavigation}
-          resizeMode="contain"
-        />
-         <Image
-          source={require('../assets/add.png')}
-          style={styles.addnavigation}
-          resizeMode="contain"
-        />
-         <Image
-          source={require('../assets/inspire.png')}
-          style={styles.inspirenavigation}
-          resizeMode="contain"
-        />
       </View>
     </View>
   );
@@ -92,16 +72,6 @@ clock: {
     alignItems: 'center',
     height: 90,                     
     paddingBottom: 20,             
-  },
-  homenavigation: {
-    width: 60,
-    height: 60,
-    tintColor: '#292524',           
-  }, 
-  addnavigation: {
-    width: 60,                    
-    height: 60,
-    tintColor: '#79716B', 
   },
   inspirenavigation: {
     width: 60,
