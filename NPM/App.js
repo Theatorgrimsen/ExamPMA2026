@@ -6,6 +6,7 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
+import InspirationScreen from './screens/InspirationScreen';
 
 function HistoryScreen() {
   return (
@@ -15,13 +16,6 @@ function HistoryScreen() {
   );
 }
 
-function InspireScreen() {
-  return (
-    <View style={styles.dummyContainer}>
-      <Text>Inspire Screen coming soon...</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -70,7 +64,7 @@ export default function App() {
             tabBarAccessibilityLabel: 'Home tab',
             tabBarIcon: () => (
               <Image 
-                source={require('../assets/Home.png')} 
+                source={require('./assets/HomeFilled.png')} 
                 style={styles.iconStyle} 
               />
             ),
@@ -87,7 +81,7 @@ export default function App() {
             tabBarAccessibilityLabel: 'Add task tab',
             tabBarIcon: () => (
               <Image 
-                source={require('../assets/Plus.png')} 
+                source={require('./assets/Add.png')} 
                 style={styles.iconStyle} 
               />
             ),
@@ -112,7 +106,7 @@ export default function App() {
             tabBarAccessibilityLabel: 'History tab',
             tabBarIcon: () => (
               <Image 
-                source={require('../assets/History.png')} 
+                source={require('./assets/History.png')} 
                 style={styles.iconStyle} 
               />
             ),
@@ -121,14 +115,14 @@ export default function App() {
 
         {/* inspire tab */}
         <Tab.Screen
-          name="Inspire"
-          component={InspireScreen}
+          name="Inspiration"
+          component={InspirationScreen}
           options={{
-            title: 'Inspire',
-            tabBarAccessibilityLabel: 'Inspire tab',
+            title: 'Inspiration',
+            tabBarAccessibilityLabel: 'Inspiration tab',
             tabBarIcon: () => (
               <Image 
-                source={require('../assets/Inspire.png')} 
+                source={require('./assets/Inspire.png')} 
                 style={styles.iconStyle} 
               />
             ),
