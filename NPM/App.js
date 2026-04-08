@@ -1,119 +1,155 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 
-// Screens
 import HomeScreen from './screens/HomeScreen';
-import FeedScreen from './screens/AddScreen';
-import HistoryScreen from './screens/HistoryScreen';
-import InspirationScreen from './screens/InspirationScreen';
+import AddTaskScreen from './screens/AddTaskScreen';
+
+function HistoryScreen() {
+  return (
+    <View style={styles.dummyContainer}>
+      <Text>History Screen coming soon...</Text>
+    </View>
+  );
+}
+
+function InspireScreen() {
+  return (
+    <View style={styles.dummyContainer}>
+      <Text>Inspire Screen coming soon...</Text>
+    </View>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
-function HomeStackScreen({ catName, personName, amountInGrams, feedNotes }) {
+// Stack for Home
+function HomeStackScreen({ taskTitle }) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeMain"
         options={{ title: 'Home', headerShown: false }}
       >
-        {() => <HomeScreen catName={catName} />}
-      </HomeStack.Screen>
-
-      <HomeStack.Screen
-        name="History"
-        options={{
-          title: 'Feeding History',
-          headerShown: true,
-          presentation: 'modal',
-          animation: 'slide_from_bottom',
-        }}
-      >
-        {() => (
-          <HistoryScreen
-            personName={personName}
-            amountInGrams={amountInGrams}
-            feedNotes={feedNotes}
-          />
-        )}
+        {() => <HomeScreen taskTitle={taskTitle} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
 }
 
 export default function App() {
-  const [catName, setCatName] = useState('');
-  const [personName, setPersonName] = useState('');
-  const [amountInGrams, setAmountInGrams] = useState('20');
-  const [feedNotes, setfeedNotes] = useState('');
+  const [taskTitle, setTaskTitle] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
 
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Add"
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: '#B3541E',
-          tabBarInactiveTintColor: '#5A5A5A',
+          tabBarActiveTintColor: '#000000',
+          tabBarInactiveTintColor: '#8E8E93',
           tabBarStyle: {
-            backgroundColor: '#F7F3EB',
+            backgroundColor: '#FFFFFF',
+            height: 90,
+            paddingBottom: 30,
+            borderTopWidth: 1,
+            borderTopColor: '#E5E5EA',
           },
-          tabBarLabelStyle: { fontSize: 12 },
+          tabBarLabelStyle: { fontSize: 12, fontWeight: '500' },
         }}
       >
+        {/* home tab */}
         <Tab.Screen
           name="Home"
           options={{
             title: 'Home',
             tabBarAccessibilityLabel: 'Home tab',
-            tabBarIcon: () => <Text style={{ fontSize: 22 }}>🏠</Text>,
+            tabBarIcon: () => (
+              <Image 
+                source={require('../assets/Home.png')} 
+                style={styles.iconStyle} 
+              />
+            ),
+          }}
+        >
+          {() => <HomeStackScreen taskTitle={taskTitle} />}
+        </Tab.Screen>
+
+        {/* ADD tab */}
+        <Tab.Screen
+          name="Add"
+          options={{
+            title: 'Add',
+            tabBarAccessibilityLabel: 'Add task tab',
+            tabBarIcon: () => (
+              <Image 
+                source={require('../assets/Plus.png')} 
+                style={styles.iconStyle} 
+              />
+            ),
           }}
         >
           {() => (
-            <HomeStackScreen
-              catName={catName}
-              personName={personName}
-              amountInGrams={amountInGrams}
-              feedNotes={feedNotes}
+            <AddTaskScreen 
+              taskTitle={taskTitle} 
+              setTaskTitle={setTaskTitle}
+              taskDescription={taskDescription}
+              setTaskDescription={setTaskDescription}
             />
           )}
         </Tab.Screen>
 
+        {/* history tab */}
         <Tab.Screen
-          name="Feed"
+          name="History"
+          component={HistoryScreen}
           options={{
-            title: 'Feed Log',
-            tabBarAccessibilityLabel: 'Feed log tab',
-            tabBarIcon: () => <Text style={{ fontSize: 22 }}>📝</Text>,
+            title: 'History',
+            tabBarAccessibilityLabel: 'History tab',
+            tabBarIcon: () => (
+              <Image 
+                source={require('../assets/History.png')} 
+                style={styles.iconStyle} 
+              />
+            ),
           }}
-        >
-          {() => (
-            <FeedScreen
-              personName={personName}
-              setPersonName={setPersonName}
-              amountInGrams={amountInGrams}
-              setAmountInGrams={setAmountInGrams}
-              feedNotes={feedNotes}
-              setfeedNotes={setfeedNotes}
-              catName={catName}
-              setCatName={setCatName}
-            />
-          )}
-        </Tab.Screen>
+        />
 
+        {/* inspire tab */}
         <Tab.Screen
-          name="Inspiration"
-          component={InspirationScreen}
+          name="Inspire"
+          component={InspireScreen}
           options={{
-            title: 'Inspiration',
-            tabBarAccessibilityLabel: 'Inspiration tab',
-            tabBarIcon: () => <Text style={{ fontSize: 22 }}>🐈</Text>,
+            title: 'Inspire',
+            tabBarAccessibilityLabel: 'Inspire tab',
+            tabBarIcon: () => (
+              <Image 
+                source={require('../assets/Inspire.png')} 
+                style={styles.iconStyle} 
+              />
+            ),
           }}
         />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
+
+const styles = StyleSheet.create({
+  dummyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F9F9F9',
+  },
+  iconStyle: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain'
+  }
+});
