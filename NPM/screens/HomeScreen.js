@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function HomeScreen({ tasks }) {
+export default function HomeScreen({ tasks, onToggleTask }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
@@ -13,18 +13,44 @@ export default function HomeScreen({ tasks }) {
           {tasks.map((task) => (
             <View key={task.id} style={styles.taskCard}>
               <View style={styles.taskTitleRow}>
-                <View
-                  style={styles.checkbox}
-                  accessibilityLabel="Unchecked task checkbox"
+                <TouchableOpacity
+                  style={[
+                    styles.checkbox,
+                    task.completed && styles.checkboxChecked,
+                  ]}
+                  onPress={() => onToggleTask(task.id)}
+                  accessibilityRole="button"
+                  accessibilityLabel={
+                    task.completed
+                      ? `Mark ${task.title} as not completed`
+                      : `Mark ${task.title} as completed`
+                  }
+                  accessibilityHint="Toggles the task completion status"
                 >
-                  <Text style={styles.checkboxMark}>✓</Text>
-                </View>
-                <Text style={styles.taskTitle}>{task.title}</Text>
+                  {task.completed ? (
+                    <Text style={styles.checkboxMark}>✓</Text>
+                  ) : null}
+                </TouchableOpacity>
+                <Text
+                  style={[
+                    styles.taskTitle,
+                    task.completed && styles.taskTitleCompleted,
+                  ]}
+                >
+                  {task.title}
+                </Text>
               </View>
 
               {!!task.description && (
                 <View style={styles.taskDescriptionRow}>
-                  <Text style={styles.taskDescription}>{task.description}</Text>
+                  <Text
+                    style={[
+                      styles.taskDescription,
+                      task.completed && styles.taskDescriptionCompleted,
+                    ]}
+                  >
+                    {task.description}
+                  </Text>
                 </View>
               )}
             </View>
@@ -58,9 +84,9 @@ const styles = StyleSheet.create({
     marginTop: 80, 
   },
   header: {
-    color: '#292524',
-    fontWeight: '600', 
-    fontSize: 24,
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#1C1C1E',
     marginBottom: 8,
   },
   date: {
@@ -101,9 +127,13 @@ const styles = StyleSheet.create({
     marginRight: 12,
     backgroundColor: '#FAFAF9',
   },
+  checkboxChecked: {
+    backgroundColor: '#2C2C2C',
+    borderColor: '#2C2C2C',
+  },
   checkboxMark: {
     fontSize: 10,
-    color: '#78716C',
+    color: '#FFFFFF',
     fontWeight: '500',
   },
   taskDescriptionRow: {
@@ -132,10 +162,18 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#2C2C2C',
   },
+  taskTitleCompleted: {
+    color: '#A8A29E',
+    textDecorationLine: 'line-through',
+  },
   taskDescription: {
     color: '#79716B',
     fontSize: 14,
     lineHeight: 20,
+  },
+  taskDescriptionCompleted: {
+    color: '#A8A29E',
+    textDecorationLine: 'line-through',
   },
  navigation: {
     flexDirection: 'row',

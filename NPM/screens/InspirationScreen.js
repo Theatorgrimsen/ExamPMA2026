@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
 
   headerContainer: {
-    marginTop: 100,
+    marginTop: 60,
     marginBottom: 40,
   },
 
@@ -144,9 +144,9 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 32,
-    fontWeight: '800',
-    color: '#2C2C2C',
+     fontSize: 28,
+    fontWeight: '700',
+    color: '#1C1C1E',
   },
 
   subTitle: {

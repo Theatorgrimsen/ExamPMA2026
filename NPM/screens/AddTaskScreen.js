@@ -1,9 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
@@ -17,62 +21,82 @@ export default function AddTaskScreen({
   const navigation = useNavigation();
 
   function handleCancel() {
+    Keyboard.dismiss();
     setTaskTitle('');
     setTaskDescription('');
     navigation.navigate('Home');
   }
 
+  function handleAddTaskPress() {
+    Keyboard.dismiss();
+    onAddTask();
+  }
+
   return (
-    <View style={styles.container}>
-      {/* Title and subtitle */}
-      <View style={styles.header}>
-        <Text style={styles.title}>Add New Task</Text>
-        <Text style={styles.subtitle}>Create a task to accomplish</Text>
-      </View>
+    <KeyboardAvoidingView
+      style={styles.keyboardContainer}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          {/* Title and subtitle */}
+          <View style={styles.header}>
+            <Text style={styles.title}>Add New Task</Text>
+            <Text style={styles.subtitle}>Create a task to accomplish</Text>
+          </View>
 
-      {/* White card */}
-      <View style={styles.card}>
-        <Text style={styles.label}>Task Title</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="What do you need to do?"
-          value={taskTitle}
-          onChangeText={setTaskTitle}
-          returnKeyType="done"
-        />
+          {/* White card */}
+          <View style={styles.card}>
+            <Text style={styles.label}>Task Title</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="What do you need to do?"
+              value={taskTitle}
+              onChangeText={setTaskTitle}
+              returnKeyType="done"
+              blurOnSubmit
+              onSubmitEditing={Keyboard.dismiss}
+            />
 
-        <Text style={styles.label}>Description (optional)</Text>
-        <TextInput
-          style={[styles.input, styles.notesInput]}
-          placeholder="Add any additional details..."
-          value={taskDescription}
-          onChangeText={setTaskDescription}
-          multiline
-          returnKeyType="done"
-        />
-      </View>
+            <Text style={styles.label}>Description (optional)</Text>
+            <TextInput
+              style={[styles.input, styles.notesInput]}
+              placeholder="Add any additional details..."
+              value={taskDescription}
+              onChangeText={setTaskDescription}
+              multiline
+              returnKeyType="done"
+              blurOnSubmit
+              onSubmitEditing={Keyboard.dismiss}
+            />
+          </View>
 
-      {/* Bottom navigation */}
-      <View style={styles.buttonRow}>
-        <TouchableOpacity 
-          style={styles.cancelButton}
-          onPress={handleCancel} 
-        >
-          <Text style={styles.cancelButtonText}>Cancel</Text>
-        </TouchableOpacity>
+          {/* Bottom navigation */}
+          <View style={styles.buttonRow}>
+            <TouchableOpacity 
+              style={styles.cancelButton}
+              onPress={handleCancel} 
+            >
+              <Text style={styles.cancelButtonText}>Cancel</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.saveButton}
-          onPress={onAddTask} 
-        >
-          <Text style={styles.saveButtonText}>Add Task</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+            <TouchableOpacity 
+              style={styles.saveButton}
+              onPress={handleAddTaskPress} 
+            >
+              <Text style={styles.saveButtonText}>Add Task</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardContainer: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#F9F9F9',

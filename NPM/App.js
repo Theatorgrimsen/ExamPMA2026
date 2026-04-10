@@ -21,14 +21,14 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
 // Stack for Home
-function HomeStackScreen({ tasks }) {
+function HomeStackScreen({ tasks, onToggleTask }) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeMain"
         options={{ title: 'Home', headerShown: false }}
       >
-        {() => <HomeScreen tasks={tasks} />}
+        {() => <HomeScreen tasks={tasks} onToggleTask={onToggleTask} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
@@ -53,10 +53,21 @@ export default function App() {
         id: Date.now().toString(),
         title: trimmedTitle,
         description: trimmedDescription,
+        completed: false,
       },
     ]);
     setTaskTitle('');
     setTaskDescription('');
+  }
+
+  function handleToggleTask(taskId) {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === taskId
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
   }
 
   return (
@@ -95,7 +106,7 @@ export default function App() {
             ),
           }}
         >
-          {() => <HomeStackScreen tasks={tasks} />} 
+          {() => <HomeStackScreen tasks={tasks} onToggleTask={handleToggleTask} />} 
         </Tab.Screen>
 
         {/* ADD tab */}
