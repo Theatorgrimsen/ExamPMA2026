@@ -10,6 +10,12 @@ import {
 export default function AddTaskScreen({ taskTitle, setTaskTitle, taskDescription, setTaskDescription }) {
   const navigation = useNavigation();
 
+  function handleCancel() {
+    setTaskTitle('');
+    setTaskDescription('');
+    navigation.navigate('Home');
+  }
+
   return (
     <View style={styles.container}>
       {/* Title and subtitle */}
@@ -44,7 +50,7 @@ export default function AddTaskScreen({ taskTitle, setTaskTitle, taskDescription
       <View style={styles.buttonRow}>
         <TouchableOpacity 
           style={styles.cancelButton}
-          onPress={() => navigation.navigate('Home')} 
+          onPress={handleCancel} 
         >
           <Text style={styles.cancelButtonText}>Cancel</Text>
         </TouchableOpacity>

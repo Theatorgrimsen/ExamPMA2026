@@ -21,14 +21,14 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
 // Stack for Home
-function HomeStackScreen({ taskTitle }) {
+function HomeStackScreen({ taskTitle, taskDescription }) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeMain"
         options={{ title: 'Home', headerShown: false }}
       >
-        {() => <HomeScreen taskTitle={taskTitle} />}
+        {() => <HomeScreen taskTitle={taskTitle} taskDescription={taskDescription} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
@@ -62,15 +62,19 @@ export default function App() {
           options={{
             title: 'Home',
             tabBarAccessibilityLabel: 'Home tab',
-            tabBarIcon: () => (
+            tabBarIcon: ({ focused, color }) => (
               <Image 
-                source={require('./assets/HomeFilled.png')} 
-                style={styles.iconStyle} 
+                source={
+                  focused
+                    ? require('./assets/HomeFilled.png')
+                    : require('./assets/Home.png')
+                }
+                style={[styles.iconStyle, { tintColor: color }]}
               />
             ),
           }}
         >
-          {() => <HomeStackScreen taskTitle={taskTitle} />}
+          {() => <HomeStackScreen taskTitle={taskTitle} taskDescription={taskDescription}/>} 
         </Tab.Screen>
 
         {/* ADD tab */}
@@ -79,10 +83,14 @@ export default function App() {
           options={{
             title: 'Add',
             tabBarAccessibilityLabel: 'Add task tab',
-            tabBarIcon: () => (
+            tabBarIcon: ({ focused, color }) => (
               <Image 
-                source={require('./assets/Add.png')} 
-                style={styles.iconStyle} 
+                source={
+                  focused
+                    ? require('./assets/AddFilled.png')
+                    : require('./assets/Add.png')
+                }
+                style={[styles.iconStyle, { tintColor: color }]}
               />
             ),
           }}
@@ -104,10 +112,10 @@ export default function App() {
           options={{
             title: 'History',
             tabBarAccessibilityLabel: 'History tab',
-            tabBarIcon: () => (
+            tabBarIcon: ({ color }) => (
               <Image 
                 source={require('./assets/History.png')} 
-                style={styles.iconStyle} 
+                style={[styles.iconStyle, { tintColor: color }]}
               />
             ),
           }}
@@ -120,10 +128,14 @@ export default function App() {
           options={{
             title: 'Inspiration',
             tabBarAccessibilityLabel: 'Inspiration tab',
-            tabBarIcon: () => (
+            tabBarIcon: ({ focused, color }) => (
               <Image 
-                source={require('./assets/Inspire.png')} 
-                style={styles.iconStyle} 
+                source={
+                  focused
+                    ? require('./assets/InspireFilled.png')
+                    : require('./assets/Inspire.png')
+                }
+                style={[styles.iconStyle, { tintColor: color }]}
               />
             ),
           }}
