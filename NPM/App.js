@@ -21,22 +21,43 @@ const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
 // Stack for Home
-function HomeStackScreen({ taskTitle, taskDescription }) {
+function HomeStackScreen({ tasks }) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeMain"
         options={{ title: 'Home', headerShown: false }}
       >
-        {() => <HomeScreen taskTitle={taskTitle} taskDescription={taskDescription} />}
+        {() => <HomeScreen tasks={tasks} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
 }
 
 export default function App() {
+  const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+
+  function handleAddTask() {
+    const trimmedTitle = taskTitle.trim();
+    const trimmedDescription = taskDescription.trim();
+
+    if (!trimmedTitle) {
+      return;
+    }
+
+    setTasks((currentTasks) => [
+      ...currentTasks,
+      {
+        id: Date.now().toString(),
+        title: trimmedTitle,
+        description: trimmedDescription,
+      },
+    ]);
+    setTaskTitle('');
+    setTaskDescription('');
+  }
 
   return (
     <NavigationContainer>
@@ -74,7 +95,7 @@ export default function App() {
             ),
           }}
         >
-          {() => <HomeStackScreen taskTitle={taskTitle} taskDescription={taskDescription}/>} 
+          {() => <HomeStackScreen tasks={tasks} />} 
         </Tab.Screen>
 
         {/* ADD tab */}
@@ -101,6 +122,7 @@ export default function App() {
               setTaskTitle={setTaskTitle}
               taskDescription={taskDescription}
               setTaskDescription={setTaskDescription}
+              onAddTask={handleAddTask}
             />
           )}
         </Tab.Screen>

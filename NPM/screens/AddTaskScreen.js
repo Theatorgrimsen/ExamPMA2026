@@ -7,7 +7,13 @@ import {
   View,
 } from 'react-native';
 
-export default function AddTaskScreen({ taskTitle, setTaskTitle, taskDescription, setTaskDescription }) {
+export default function AddTaskScreen({
+  taskTitle,
+  setTaskTitle,
+  taskDescription,
+  setTaskDescription,
+  onAddTask,
+}) {
   const navigation = useNavigation();
 
   function handleCancel() {
@@ -57,7 +63,7 @@ export default function AddTaskScreen({ taskTitle, setTaskTitle, taskDescription
 
         <TouchableOpacity 
           style={styles.saveButton}
-          onPress={() => navigation.navigate('Home')} 
+          onPress={onAddTask} 
         >
           <Text style={styles.saveButtonText}>Add Task</Text>
         </TouchableOpacity>

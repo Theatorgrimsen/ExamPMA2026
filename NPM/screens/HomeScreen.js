@@ -1,32 +1,34 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 
-export default function HomeScreen({ taskTitle, taskDescription }) {
+export default function HomeScreen({ tasks }) {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Today's Tasks</Text>
         <Text style={styles.date}>Tuesday, March 24, 2026</Text>
       </View>
 
-      {taskTitle ? (
+      {tasks.length > 0 ? (
         <View style={styles.taskSection}>
-          <View style={styles.taskCard}>
-            <View style={styles.taskTitleRow}>
-              <View
-                style={styles.checkbox}
-                accessibilityLabel="Unchecked task checkbox"
-              >
-                <Text style={styles.checkboxMark}>✓</Text>
+          {tasks.map((task) => (
+            <View key={task.id} style={styles.taskCard}>
+              <View style={styles.taskTitleRow}>
+                <View
+                  style={styles.checkbox}
+                  accessibilityLabel="Unchecked task checkbox"
+                >
+                  <Text style={styles.checkboxMark}>✓</Text>
+                </View>
+                <Text style={styles.taskTitle}>{task.title}</Text>
               </View>
-              <Text style={styles.taskTitle}>{taskTitle}</Text>
-            </View>
 
-            {!!taskDescription && (
-              <View style={styles.taskDescriptionRow}>
-                <Text style={styles.taskDescription}>{taskDescription}</Text>
-              </View>
-            )}
-          </View>
+              {!!task.description && (
+                <View style={styles.taskDescriptionRow}>
+                  <Text style={styles.taskDescription}>{task.description}</Text>
+                </View>
+              )}
+            </View>
+          ))}
         </View>
       ) : (
         <View style={styles.content}>
@@ -41,14 +43,15 @@ export default function HomeScreen({ taskTitle, taskDescription }) {
           </Text>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#FAFAF9',
+    paddingBottom: 24,
   },
   headerContainer: {
     paddingHorizontal: 25,
@@ -80,11 +83,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 14,
     padding: 20,
+    marginBottom: 16,
   },
   taskTitleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 4,
   },
   checkbox: {
     width: 16,
