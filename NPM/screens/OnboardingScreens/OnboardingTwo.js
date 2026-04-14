@@ -6,15 +6,8 @@ export default function OnboardingTwo() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.skipButton}
-        onPress={() => navigation.replace('MainTabs')}
-      >
-        <Text style={styles.skipText}>Skip</Text>
-      </TouchableOpacity>
-
       <Image 
-      source={require('../../assets/Add.png')} 
+      source={require('../../assets/Action.png')} 
       // A note on what is going on here:
       // When giving a relative path, such as the one above, the path is found from where the current file's path
       // This means that to tell the code to show 'entry.png' which is in the assets folder you need to navigate to the assets folder FROM where this file 'OnboardingTwo' is
@@ -23,17 +16,34 @@ export default function OnboardingTwo() {
       // the '..' (two dots) is the way to tell the path to go "up"
       style={styles.image} />
 
-      <Text style={styles.title}>Begin by logging your feeds in the Feed Log 📝 </Text>
+      <Text style={styles.title}>From thought to action </Text>
       <Text style={styles.description}>
-        After you're done press the Save Entry Feed Button
+         Quickly add tasks with titles and details. Organizing your 
+         day has never been easier—just head to the "Add" tab and start 
+         building your list.
       </Text>
 
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('OnboardingThree')}
-      >
-        <Text style={styles.buttonText}>Next</Text>
-      </Pressable>
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.footerSide}
+          onPress={() => navigation.replace('MainTabs')}
+        >
+          <Text style={styles.skipText}>Skip</Text>
+        </TouchableOpacity>
+
+        <View style={styles.pagination}>
+          <View style={styles.dot} />
+          <View style={[styles.dot, styles.dotActive]} />
+          <View style={styles.dot} />
+        </View>
+
+        <Pressable
+          style={styles.footerSide}
+          onPress={() => navigation.navigate('OnboardingThree')}
+        >
+          <Text style={styles.buttonText}>Next</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -44,48 +54,64 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
-    backgroundColor: '#F7F3EB',
+    backgroundColor: '#FFFFFF',
   },
-  skipButton: {
+  footer: {
     position: 'absolute',
-    top: 56,
-    right: 24,
+    left: 40,
+    right: 40,
+    bottom: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerSide: {
+    width: 72,
   },
   skipText: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#8C4A1E',
+    color: '#2D2B2E',
+    fontSize: 18,
+    fontWeight: '400',
+    textAlign: 'left',
   },
- image: {
-    width: 180,
-    height: 250,
+  image: {
+    width: 210,
+    height: 210,
     borderRadius: 16,
     marginBottom: 20,
-    borderWidth: 3,
-    borderColor: '#8C4A1E',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '800',
     textAlign: 'center',
-    marginBottom: 12,
-    color: '#2C2C2C',
+    marginBottom: 24,
+    color: '#2D2B2E',
   },
   description: {
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
-    color: '#5A5A5A',
+    color: '#6C6C6C',
     marginBottom: 24,
+    lineHeight: 26,
   },
-  button: {
-    backgroundColor: '#B3541E',
-    borderRadius: 12,
-    paddingVertical: 14,
-    paddingHorizontal: 24,
+  pagination: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#D1D5DB',
+  },
+  dotActive: {
+    backgroundColor: '#2D2B2E',
   },
   buttonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '700',
+    color: '#2D2B2E',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'right',
   },
 });
