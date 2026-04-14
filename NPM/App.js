@@ -73,7 +73,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Add"
+        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: '#000000',
