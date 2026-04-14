@@ -1,16 +1,65 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-export default function HistoryScreen({ personName, amountInGrams, feedNotes }) {
+function HistoryTaskCard({ task }) {
+  function formatCompletedDate(dateString) {
+    if (!dateString) {
+      return '';
+    }
+
+    return new Date(dateString).toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+
+  return (
+    <View style={styles.taskCard}>
+      <View style={styles.taskTitleRow}>
+        <View
+          style={styles.checkboxChecked}
+          accessibilityLabel="Completed task"
+        >
+          <Text style={styles.checkboxMark}>✓</Text>
+        </View>
+
+        <View style={styles.textWrapper}>
+          <Text style={styles.taskTitle}>{task.title}</Text>
+          <Text style={styles.completedText}>
+            Completed {formatCompletedDate(task.completedAt)}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+export default function HistoryScreen({ tasks }) {
+  const completedTasks = tasks
+    .filter((task) => task.completed)
+    .slice()
+    .reverse();
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>Feeding History</Text>
-        <View style={styles.listWrapper}>
-            <View style={styles.card}>
-              <Text style={styles.mainText}>Fed by: {personName}</Text>
-              <Text style={styles.subText}>Amount: {amountInGrams} grams</Text>
-              <Text style={styles.subText}>Notes: {feedNotes || 'No remarks'}</Text>
-            </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>History</Text>
+        <Text style={styles.subtitle}>Your completed tasks</Text>
+      </View>
+
+      {completedTasks.length > 0 ? (
+        <View style={styles.taskSection}>
+          {completedTasks.map((task) => (
+            <HistoryTaskCard key={task.id} task={task} />
+          ))}
         </View>
+      ) : (
+        <View style={styles.emptyBox}>
+          <Text style={styles.emptyText}>No completed tasks yet.</Text>
+        </View>
+      )}
     </ScrollView>
   );
 }
@@ -18,54 +67,88 @@ export default function HistoryScreen({ personName, amountInGrams, feedNotes }) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F3EB',
+    backgroundColor: '#FAFAF9',
   },
   content: {
-    padding: 18,
     flexGrow: 1,
+    paddingBottom: 24,
   },
-  title: {
+  headerContainer: {
+    paddingHorizontal: 18,
+    marginTop: 80,
+    marginBottom: 24,
+  },
+  header: {
     fontSize: 28,
-    fontWeight: '800',
-    color: '#2C2C2C',
-    marginBottom: 16,
-    textAlign: 'center',
-  },
-  listWrapper: {
-    flex: 1,
-    minHeight: 450,
-    padding: 12,
-  },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderColor: '#A46028',
-    borderWidth: 2,
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 12,
-  },
-  mainText: {
-    fontSize: 17,
     fontWeight: '700',
-    color: '#2C2C2C',
-    marginBottom: 6,
+    color: '#1C1C1E',
+    marginBottom: 8,
   },
-  subText: {
-    fontSize: 15,
-    color: '#4A4A4A',
+  subtitle: {
+    fontSize: 16,
+    color: '#A8A29E',
+  },
+  taskSection: {
+    paddingHorizontal: 16,
+  },
+  taskCard: {
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 14,
+    padding: 20,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  taskTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  checkboxChecked: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 2,
+    borderColor: '#22C55E',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+    marginTop: 2,
+  },
+  checkboxMark: {
+    fontSize: 10,
+    color: '#22C55E',
+    fontWeight: '700',
+  },
+  textWrapper: {
+    flex: 1,
+  },
+  taskTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#2C2C2C',
     marginBottom: 4,
   },
+  completedText: {
+    fontSize: 13,
+    color: '#A8A29E',
+  },
   emptyBox: {
-    marginTop: 24,
+    marginHorizontal: 16,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#D5C8B6',
-    padding: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    padding: 18,
   },
   emptyText: {
     textAlign: 'center',
-    color: '#5A5A5A',
+    color: '#79716B',
     fontSize: 15,
   },
 });

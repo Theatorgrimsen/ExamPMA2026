@@ -7,6 +7,8 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
 import InspirationScreen from './screens/InspirationScreen';
+import HistoryScreen from './screens/HistoryScreen';
+
 
 // Importing the Onboarding Screens
 import OnboardingOne from './screens/OnboardingScreens/OnboardingOne';
@@ -31,13 +33,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function HistoryScreen() {
-  return (
-    <View style={styles.dummyContainer}>
-      <Text>History Screen coming soon...</Text>
-    </View>
-  );
-}
+
 
 // Stack for Home
 function HomeStackScreen({ tasks, onToggleTask }) {
@@ -55,10 +51,8 @@ function HomeStackScreen({ tasks, onToggleTask }) {
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
-  const [taskTitle, setTaskTitle] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
 
-  function handleAddTask() {
+  function handleAddTask(taskTitle, taskDescription) {
     const trimmedTitle = taskTitle.trim();
     const trimmedDescription = taskDescription.trim();
 
@@ -73,21 +67,24 @@ export default function App() {
         title: trimmedTitle,
         description: trimmedDescription,
         completed: false,
+        completedAt: null,
       },
     ]);
-    setTaskTitle('');
-    setTaskDescription('');
   }
 
-  function handleToggleTask(taskId) {
-    setTasks((currentTasks) =>
-      currentTasks.map((task) =>
-        task.id === taskId
-          ? { ...task, completed: !task.completed }
-          : task
-      )
-    );
-  }
+function handleToggleTask(taskId) {
+  setTasks((currentTasks) =>
+    currentTasks.map((task) =>
+      task.id === taskId
+        ? {
+            ...task,
+            completed: !task.completed,
+            completedAt: !task.completed ? new Date().toISOString() : null,
+          }
+        : task
+    )
+  );
+}
 
   function MainTabs() {
     return (
@@ -147,31 +144,27 @@ export default function App() {
           }}
         >
           {() => (
-            <AddTaskScreen 
-              taskTitle={taskTitle} 
-              setTaskTitle={setTaskTitle}
-              taskDescription={taskDescription}
-              setTaskDescription={setTaskDescription}
-              onAddTask={handleAddTask}
-            />
+            <AddTaskScreen onAddTask={handleAddTask} />
           )}
         </Tab.Screen>
 
         {/* history tab */}
         <Tab.Screen
-          name="History"
-          component={HistoryScreen}
-          options={{
-            title: 'History',
-            tabBarAccessibilityLabel: 'History tab',
-            tabBarIcon: ({ color }) => (
-              <Image 
-                source={require('./assets/History.png')} 
-                style={[styles.iconStyle, { tintColor: color }]}
-              />
-            ),
-          }}
-        />
+  name="History"
+  options={{
+    title: 'History',
+    tabBarAccessibilityLabel: 'History tab',
+    tabBarIcon: ({ color }) => (
+      <Image 
+        source={require('./assets/History.png')} 
+        style={[styles.iconStyle, { tintColor: color }]}
+      />
+    ),
+  }}
+>
+  {() => <HistoryScreen tasks={tasks} />}
+</Tab.Screen>
+
 
         {/* inspire tab */}
         <Tab.Screen

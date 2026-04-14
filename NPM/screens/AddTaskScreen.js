@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   Keyboard,
@@ -12,13 +13,11 @@ import {
 } from 'react-native';
 
 export default function AddTaskScreen({
-  taskTitle,
-  setTaskTitle,
-  taskDescription,
-  setTaskDescription,
   onAddTask,
 }) {
   const navigation = useNavigation();
+  const [taskTitle, setTaskTitle] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
 
   function handleCancel() {
     Keyboard.dismiss();
@@ -29,7 +28,9 @@ export default function AddTaskScreen({
 
   function handleAddTaskPress() {
     Keyboard.dismiss();
-    onAddTask();
+    onAddTask(taskTitle, taskDescription);
+    setTaskTitle('');
+    setTaskDescription('');
   }
 
   return (
