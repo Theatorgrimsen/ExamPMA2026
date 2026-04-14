@@ -5,7 +5,14 @@ export default function HomeScreen({ tasks, onToggleTask }) {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Today's Tasks</Text>
-        <Text style={styles.date}>Tuesday, March 24, 2026</Text>
+        <Text style={styles.date}>
+         {new Date().toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+  })}
+</Text>
       </View>
 
       {tasks.length > 0 ? (
