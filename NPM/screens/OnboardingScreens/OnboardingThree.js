@@ -14,7 +14,7 @@ export default function OnboardingThree() {
       </TouchableOpacity>
 
       <Image 
-      source={require('./../../assets/Home.png')} 
+      source={require('../../assets/Home.png')}
       style={styles.image} />
 
       <Text style={styles.title}>Discover your cat's eating habits</Text>

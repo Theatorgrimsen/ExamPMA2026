@@ -13,6 +13,24 @@ import OnboardingOne from './screens/OnboardingScreens/OnboardingOne';
 import OnboardingTwo from './screens/OnboardingScreens/OnboardingTwo';
 import OnboardingThree from './screens/OnboardingScreens/OnboardingThree';
 
+const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+const OnboardingStack = createNativeStackNavigator();
+
+const styles = StyleSheet.create({
+  dummyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F9F9F9',
+  },
+  iconStyle: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain'
+  }
+});
+
 function HistoryScreen() {
   return (
     <View style={styles.dummyContainer}>
@@ -20,11 +38,6 @@ function HistoryScreen() {
     </View>
   );
 }
-
-
-const Tab = createBottomTabNavigator();
-const HomeStack = createNativeStackNavigator();
-const OnboardingStack = createNativeStackNavigator();
 
 // Stack for Home
 function HomeStackScreen({ tasks, onToggleTask }) {
@@ -76,8 +89,8 @@ export default function App() {
     );
   }
 
-  return (
-    <NavigationContainer>
+  function MainTabs() {
+    return (
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -180,45 +193,22 @@ export default function App() {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
-  );
-    {/* onboarding */}
+    );
+  }
+
+  {/* onboarding */}
   return (
     <NavigationContainer>
-    <OnboardingStack.Navigator
-      initialRouteName="OnboardingOne"
-      screenOptions={{ headerShown: false }}
-    >
-      <OnboardingStack.Screen name="OnboardingOne" component={OnboardingOne} />
-      <OnboardingStack.Screen name="OnboardingTwo" component={OnboardingTwo} />
-      <OnboardingStack.Screen name="OnboardingThree" component={OnboardingThree} />
+      <OnboardingStack.Navigator
+        initialRouteName="OnboardingOne"
+        screenOptions={{ headerShown: false }}
+      >
+        <OnboardingStack.Screen name="OnboardingOne" component={OnboardingOne} />
+        <OnboardingStack.Screen name="OnboardingTwo" component={OnboardingTwo} />
+        <OnboardingStack.Screen name="OnboardingThree" component={OnboardingThree} />
 
-      <OnboardingStack.Screen name="MainTabs">
-        {() => (
-          <MainTabs
-            catName={catName}
-            setCatName={setCatName}
-            feedEntries={feedEntries}
-            addFeedEntry={addFeedEntry}
-          />
-        )}
-      </OnboardingStack.Screen>
-    </OnboardingStack.Navigator>
-  </NavigationContainer>
+        <OnboardingStack.Screen name="MainTabs" component={MainTabs} />
+      </OnboardingStack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
-const styles = StyleSheet.create({
-  dummyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F9F9F9',
-  },
-  iconStyle: {
-    width: 24,
-    height: 24,
-    resizeMode: 'contain'
-  }
-});

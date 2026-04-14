@@ -13,8 +13,6 @@ export default function OnboardingOne() {
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
 
-      <Image source={{ uri: 'https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg' }} style={styles.image} />
-
       <Text style={styles.title}>Welcome to the cat feeder app!</Text>
       <Text style={styles.description}>
         This app will solve all your problems when it comes to knowing who fed your cat.
