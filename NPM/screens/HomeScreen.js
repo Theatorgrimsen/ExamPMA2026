@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ tasks, onToggleTask }) {
+    const navigation = useNavigation();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>

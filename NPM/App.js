@@ -8,6 +8,11 @@ import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
 import InspirationScreen from './screens/InspirationScreen';
 
+// Importing the Onboarding Screens
+import OnboardingOne from './screens/OnboardingScreens/OnboardingOne';
+import OnboardingTwo from './screens/OnboardingScreens/OnboardingTwo';
+import OnboardingThree from './screens/OnboardingScreens/OnboardingThree';
+
 function HistoryScreen() {
   return (
     <View style={styles.dummyContainer}>
@@ -19,6 +24,7 @@ function HistoryScreen() {
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
+const OnboardingStack = createNativeStackNavigator();
 
 // Stack for Home
 function HomeStackScreen({ tasks, onToggleTask }) {
@@ -175,6 +181,30 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
+  );
+    {/* onboarding */}
+  return (
+    <NavigationContainer>
+    <OnboardingStack.Navigator
+      initialRouteName="OnboardingOne"
+      screenOptions={{ headerShown: false }}
+    >
+      <OnboardingStack.Screen name="OnboardingOne" component={OnboardingOne} />
+      <OnboardingStack.Screen name="OnboardingTwo" component={OnboardingTwo} />
+      <OnboardingStack.Screen name="OnboardingThree" component={OnboardingThree} />
+
+      <OnboardingStack.Screen name="MainTabs">
+        {() => (
+          <MainTabs
+            catName={catName}
+            setCatName={setCatName}
+            feedEntries={feedEntries}
+            addFeedEntry={addFeedEntry}
+          />
+        )}
+      </OnboardingStack.Screen>
+    </OnboardingStack.Navigator>
+  </NavigationContainer>
   );
 }
 

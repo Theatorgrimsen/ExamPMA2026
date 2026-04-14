@@ -14,7 +14,7 @@ export default function OnboardingTwo() {
       </TouchableOpacity>
 
       <Image 
-      source={require('./../../assets/entry.png')} 
+      source={require('../../assets/Add.png')} 
       // A note on what is going on here:
       // When giving a relative path, such as the one above, the path is found from where the current file's path
       // This means that to tell the code to show 'entry.png' which is in the assets folder you need to navigate to the assets folder FROM where this file 'OnboardingTwo' is
