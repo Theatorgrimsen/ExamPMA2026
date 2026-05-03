@@ -3,11 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, View, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
 import InspirationScreen from './screens/InspirationScreen';
 import HistoryScreen from './screens/HistoryScreen';
+import HealthScreen from './screens/InspirationStack/Health'; 
+import CareerScreen from './screens/InspirationStack/Career'; 
+import LearningScreen from './screens/InspirationStack/Learning'; 
 
 
 // Importing the Onboarding Screens
@@ -18,6 +22,7 @@ import OnboardingThree from './screens/OnboardingScreens/OnboardingThree';
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 const OnboardingStack = createNativeStackNavigator();
+const InspirationStack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   dummyContainer: {
@@ -46,6 +51,41 @@ function HomeStackScreen({ tasks, onToggleTask }) {
         {() => <HomeScreen tasks={tasks} onToggleTask={onToggleTask} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
+  );
+}
+
+  {/* inspiration stack */}
+function InspirationStackScreen() {
+  return (
+    <InspirationStack.Navigator
+      screenOptions={{ headerShown: false }} 
+    >
+      <InspirationStack.Screen 
+        name="InspirationMain" 
+        component={InspirationScreen} 
+      />
+      <InspirationStack.Screen 
+        name="HealthDetail" 
+        component={HealthScreen} 
+        options={{ 
+          presentation: 'modal', //screens slides from the bottom
+        }} 
+      />
+      <InspirationStack.Screen 
+        name="CareerDetail" 
+        component={CareerScreen} 
+        options={{ 
+          presentation: 'modal', 
+        }} 
+      />
+      <InspirationStack.Screen 
+        name="LearningDetail" 
+        component={LearningScreen} 
+        options={{ 
+          presentation: 'modal', 
+        }} 
+      />
+    </InspirationStack.Navigator>
   );
 }
 
@@ -169,7 +209,7 @@ function handleToggleTask(taskId) {
         {/* inspire tab */}
         <Tab.Screen
           name="Inspiration"
-          component={InspirationScreen}
+          component={InspirationStackScreen}
           options={{
             title: 'Inspiration',
             tabBarAccessibilityLabel: 'Inspiration tab',

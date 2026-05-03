@@ -1,9 +1,13 @@
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Pressable, TouchableOpacity } from 'react-native';
 
 // 🔧 Gjenbrukbar komponent
-function InspirationCard({ title, icon, points }) {
+function InspirationCard({ title, icon, points, onPress }) {
   return (
-    <View style={styles.card}>
+<TouchableOpacity 
+      activeOpacity={onPress ? 0.7 : 1} 
+      onPress={onPress} 
+      style={styles.card}
+    >
       <View style={styles.cardTitleRow}>
         <Image source={icon} style={styles.image} />
         <Text style={styles.cardTitle}>{title}</Text>
@@ -20,11 +24,11 @@ function InspirationCard({ title, icon, points }) {
           </View>
         ))}
       </View>
-    </View>
+  </TouchableOpacity> 
   );
 }
 
-export default function InspirationScreen() {
+export default function InspirationScreen({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
@@ -43,10 +47,11 @@ export default function InspirationScreen() {
         </Text>
       </View>
 
-      {/* Cards (manuelt lagt inn) */}
-      <InspirationCard
+      {/* Cards with pop-ups */}
+     <InspirationCard
         title="Health & Wellness"
         icon={require('../assets/Health.png')}
+        onPress={() => navigation.navigate('HealthDetail')} 
         points={[
           "Exercise 3 times a week",
           "Drink 8 glasses of water daily",
@@ -58,6 +63,7 @@ export default function InspirationScreen() {
       <InspirationCard
         title="Career & Finance"
         icon={require('../assets/Finance.png')}
+        onPress={() => navigation.navigate('CareerDetail')}
         points={[
           "Build a professional portfolio",
           "Take an online course",
@@ -69,14 +75,16 @@ export default function InspirationScreen() {
       <InspirationCard
         title="Learning & Growth"
         icon={require('../assets/Learning.png')}
+        onPress={() => navigation.navigate('LearningDetail')}
         points={[
           "Read more books",
           "Practice mindfulness",
           "Learn a new language",
-          "Coo"
+          "Take an online course"
         ]}
       />
 
+      {/* Cards without pop-ups */}
       <InspirationCard
         title="Fitness Goals"
         icon={require('../assets/Fitness.png')}
