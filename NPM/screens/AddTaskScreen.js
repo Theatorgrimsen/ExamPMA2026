@@ -42,7 +42,10 @@ export default function AddTaskScreen({
         <View style={styles.container}>
           {/* Title and subtitle */}
           <View style={styles.header}>
-            <Text style={styles.title}>Add New Task</Text>
+            <Text style={styles.title}
+            accessibilityRole="header"
+            >Add New Task
+            </Text>
             <Text style={styles.subtitle}>Create a task to accomplish</Text>
           </View>
 
@@ -57,6 +60,8 @@ export default function AddTaskScreen({
               returnKeyType="done"
               blurOnSubmit
               onSubmitEditing={Keyboard.dismiss}
+             accessibilityLabel="Task title input field"
+            accessibilityHint="Enter the name of your new task here"
             />
 
             <Text style={styles.label}>Description (optional)</Text>
@@ -69,6 +74,8 @@ export default function AddTaskScreen({
               returnKeyType="done"
               blurOnSubmit
               onSubmitEditing={Keyboard.dismiss}
+              accessibilityLabel="Task description input field"
+              accessibilityHint="Enter optional details or notes about your task"
             />
           </View>
 
@@ -77,6 +84,8 @@ export default function AddTaskScreen({
             <TouchableOpacity 
               style={styles.cancelButton}
               onPress={handleCancel} 
+              accessibilityRole="button"
+              accessibilityHint="Cancels task creation and returns to the home screen"
             >
               <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
@@ -84,6 +93,8 @@ export default function AddTaskScreen({
             <TouchableOpacity 
               style={styles.saveButton}
               onPress={handleAddTaskPress} 
+              accessibilityRole="button"
+              accessibilityHint="Saves the new task to your list"
             >
               <Text style={styles.saveButtonText}>Add Task</Text>
             </TouchableOpacity>

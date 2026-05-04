@@ -9,8 +9,12 @@ export default function LearningScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image source={require('../../assets/Learning.png')} style={styles.icon} />
-          <Text style={styles.title}>Learning & Growth</Text>
+             <Image source={require('../../assets/Learning.png')} 
+             style={styles.icon} />
+             accessibilityLabel="Learning and growth icon"
+          <Text style={styles.title}
+          accessibilityRole="header"
+          >Learning & Growth</Text>
         </View>
 
         <Text style={styles.sectionTitle}>❤️ Why this matters</Text>
@@ -21,6 +25,7 @@ export default function LearningScreen({ navigation }) {
         <Image 
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
           style={styles.mainImage} 
+          accessibilityLabel="Illustration representing personal development and education"
         />
 
         <Text style={styles.sectionTitle}>Benefits</Text>
@@ -33,7 +38,10 @@ export default function LearningScreen({ navigation }) {
         <Text style={styles.bullet}>This category supports goals connected to education, creativity, new skills, and self-development.</Text>
 
         {/* Custom "X" or Close button */}
-        <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.closeButton} 
+        onPress={() => navigation.goBack()}>
+          accessibilityRole="button"
+          accessibilityHint="Closes this learning information screen and returns to the previous page"
           <Text style={styles.closeText}>Close</Text>
         </TouchableOpacity>
       </ScrollView>

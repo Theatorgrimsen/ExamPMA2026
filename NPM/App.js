@@ -150,6 +150,7 @@ function handleToggleTask(taskId) {
           options={{
             title: 'Home',
             tabBarAccessibilityLabel: 'Home tab',
+            tabBarAccessibilityHint: 'Navigates to your daily task list',
             tabBarIcon: ({ focused, color }) => (
               <Image 
                 source={
@@ -158,6 +159,7 @@ function handleToggleTask(taskId) {
                     : require('./assets/Home.png')
                 }
                 style={[styles.iconStyle, { tintColor: color }]}
+                accessibilityLabel="Home icon"
               />
             ),
           }}
@@ -171,6 +173,7 @@ function handleToggleTask(taskId) {
           options={{
             title: 'Add',
             tabBarAccessibilityLabel: 'Add task tab',
+            tabBarAccessibilityHint: 'Opens the screen to create a new task',
             tabBarIcon: ({ focused, color }) => (
               <Image 
                 source={
@@ -179,6 +182,7 @@ function handleToggleTask(taskId) {
                     : require('./assets/Add.png')
                 }
                 style={[styles.iconStyle, { tintColor: color }]}
+                accessibilityLabel="Plus icon"
               />
             ),
           }}
@@ -194,10 +198,12 @@ function handleToggleTask(taskId) {
   options={{
     title: 'History',
     tabBarAccessibilityLabel: 'History tab',
+    tabBarAccessibilityHint: 'Shows your completed tasks',
     tabBarIcon: ({ color }) => (
       <Image 
         source={require('./assets/History.png')} 
         style={[styles.iconStyle, { tintColor: color }]}
+        accessibilityLabel="History clock icon"
       />
     ),
   }}
@@ -213,6 +219,7 @@ function handleToggleTask(taskId) {
           options={{
             title: 'Inspiration',
             tabBarAccessibilityLabel: 'Inspiration tab',
+            tabBarAccessibilityHint: 'Navigates to wellness and growth ideas',
             tabBarIcon: ({ focused, color }) => (
               <Image 
                 source={
@@ -221,6 +228,7 @@ function handleToggleTask(taskId) {
                     : require('./assets/Inspire.png')
                 }
                 style={[styles.iconStyle, { tintColor: color }]}
+                accessibilityLabel="Inspiration icon"
               />
             ),
           }}

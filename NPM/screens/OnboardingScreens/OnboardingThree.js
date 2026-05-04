@@ -9,22 +9,31 @@ export default function OnboardingThree() {
       <Image 
       source={require('../../assets/Motivation.png')}
       style={styles.image} />
+      accessibilityLabel="Illustration showing a person being inspired"
 
-      <Text style={styles.title}>Track progress & find motivation</Text>
+      <Text style={styles.title}
+      accessibilityRole="header"
+      >Track progress & find motivation
+      </Text>
       <Text style={styles.description}>
         Check off completed tasks to see how far you've come. If you ever 
         feel stuck, visit the "Inspiration" tab to get the boost you need to reach your goals.
       </Text>
 
       <View style={styles.footer}>
+        accessible={true}
+        ccessibilityLabel="Onboarding navigation footer"
         <TouchableOpacity
           style={styles.footerSide}
           onPress={() => navigation.replace('MainTabs')}
+          accessibilityRole="button"
+          accessibilityHint="Skips the remaining introduction and enters the app"
         >
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
 
         <View style={styles.pagination}>
+          accessibilityLabel="Page 3 of 3"
           <View style={styles.dot} />
           <View style={styles.dot} />
           <View style={[styles.dot, styles.dotActive]} />

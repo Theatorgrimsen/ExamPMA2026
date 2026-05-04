@@ -9,8 +9,15 @@ export default function CareerScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image source={require('../../assets/Finance.png')} style={styles.icon} />
-          <Text style={styles.title}>Career & Finance</Text>
+             <Image 
+             source={require('../../assets/Finance.png')} 
+             style={styles.icon} />
+             accessibilityLabel="Finance icon"
+          <Text 
+          style={styles.title}>
+            accessibilityRole="header"
+            Career & Finance
+          </Text>
         </View>
 
         <Text style={styles.sectionTitle}>❤️ Why this matters</Text>
@@ -21,6 +28,7 @@ export default function CareerScreen({ navigation }) {
         <Image 
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
           style={styles.mainImage} 
+          accessibilityLabel="Illustration of career and financial stability"
         />
 
         <Text style={styles.sectionTitle}>Benefits</Text>
@@ -34,7 +42,11 @@ export default function CareerScreen({ navigation }) {
         <Text style={styles.bullet}>This category helps users focus on goals related to professional growth, money habits, and long-term stability.</Text>
 
         {/* Close button */}
-        <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity 
+          style={styles.closeButton} 
+          onPress={() => navigation.goBack()}>
+          accessibilityRole="button"
+          accessibilityHint="Closes this screen and returns to the previous page"
           <Text style={styles.closeText}>Close</Text>
         </TouchableOpacity>
       </ScrollView>

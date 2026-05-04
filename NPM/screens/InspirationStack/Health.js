@@ -9,7 +9,10 @@ export default function HealthScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image source={require('../../assets/Health.png')} style={styles.icon} />
+             <Image source={require('../../assets/Health.png')} 
+             style={styles.icon} />
+            accessibilityLabel="Health and wellness icon"
+
           <Text style={styles.title}>Health & Wellness</Text>
         </View>
 
@@ -20,7 +23,8 @@ export default function HealthScreen({ navigation }) {
 
         <Image 
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
-          style={styles.mainImage} 
+          style={styles.mainImage}
+          accessibilityLabel="Illustration showing physical and mental well-being" 
         />
 
         <Text style={styles.sectionTitle}>Benefits</Text>
@@ -33,8 +37,13 @@ export default function HealthScreen({ navigation }) {
         <Text style={styles.bullet}>This category is here to inspire habits that support your well-being over time. It is not about being perfect, but about building routines that help you feel better in everyday life.</Text>
 
         {/* Custom "X" or Close button */}
-        <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity 
+          style={styles.closeButton} 
+          onPress={() => navigation.goBack()}>
+          accessibilityRole="button"
+          accessibilityHint="Closes this wellness information screen and returns to the previous page"
           <Text style={styles.closeText}>Close</Text>
+        
         </TouchableOpacity>
       </ScrollView>
     </View>

@@ -7,7 +7,10 @@ export default function HomeScreen({ tasks, onToggleTask }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>Today's Tasks</Text>
+        <Text style={styles.header}
+        accessibilityRole="header"
+        >Today's Tasks
+        </Text>
         <Text style={styles.date}>
          {new Date().toLocaleDateString('en-US', {
           weekday: 'long',
@@ -21,7 +24,11 @@ export default function HomeScreen({ tasks, onToggleTask }) {
       {tasks.length > 0 ? (
         <View style={styles.taskSection}>
           {tasks.map((task) => (
-            <View key={task.id} style={styles.taskCard}>
+            <View 
+            key={task.id} 
+            style={styles.taskCard}>
+              accessible={true}
+              accessibilityLabel={`Task: ${task.title}. Status: ${task.completed ? 'Completed' : 'Not completed'}`}
               <View style={styles.taskTitleRow}>
                 <TouchableOpacity
                   style={[

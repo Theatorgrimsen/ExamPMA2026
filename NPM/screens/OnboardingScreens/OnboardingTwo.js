@@ -15,8 +15,12 @@ export default function OnboardingTwo() {
       // then into the assets folder and to finally reach the entry.png file
       // the '..' (two dots) is the way to tell the path to go "up"
       style={styles.image} />
+      accessibilityLabel="Illustration of a person organizing tasks"
 
-      <Text style={styles.title}>From thought to action </Text>
+      <Text style={styles.title}
+      accessibilityRole="header"
+      >From thought to action 
+      </Text>
       <Text style={styles.description}>
          Quickly add tasks with titles and details. Organizing your 
          day has never been easier—just head to the "Add" tab and start 
@@ -24,14 +28,19 @@ export default function OnboardingTwo() {
       </Text>
 
       <View style={styles.footer}>
+        accessible={true}
+        accessibilityLabel="Onboarding navigation footer"
         <TouchableOpacity
           style={styles.footerSide}
           onPress={() => navigation.replace('MainTabs')}
+          accessibilityRole="button"
+          accessibilityHint="Skips the introduction and enters the main app"
         >
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
 
         <View style={styles.pagination}>
+          accessibilityLabel="Page 2 of 3"
           <View style={styles.dot} />
           <View style={[styles.dot, styles.dotActive]} />
           <View style={styles.dot} />
@@ -40,6 +49,8 @@ export default function OnboardingTwo() {
         <Pressable
           style={styles.footerSide}
           onPress={() => navigation.navigate('OnboardingThree')}
+          accessibilityRole="button"
+          accessibilityHint="Goes to the next onboarding page"
         >
           <Text style={styles.buttonText}>Next</Text>
         </Pressable>

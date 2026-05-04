@@ -17,10 +17,13 @@ function HistoryTaskCard({ task }) {
 
   return (
     <View style={styles.taskCard}>
+      accessible={true}
+      accessibilityLabel={`Completed task: ${task.title}`}
+
       <View style={styles.taskTitleRow}>
         <View
           style={styles.checkboxChecked}
-          accessibilityLabel="Completed task"
+          accessibilityLabel="Completed checkmark"
         >
           <Text style={styles.checkboxMark}>✓</Text>
         </View>
@@ -45,7 +48,10 @@ export default function HistoryScreen({ tasks }) {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header}>History</Text>
+        <Text style={styles.header}
+        accessibilityRole="header"
+        >History
+        </Text>
         <Text style={styles.subtitle}>Your completed tasks</Text>
       </View>
 

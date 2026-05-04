@@ -7,9 +7,16 @@ function InspirationCard({ title, icon, points, onPress }) {
       activeOpacity={onPress ? 0.7 : 1} 
       onPress={onPress} 
       style={styles.card}
+      accessible={true}
+      accessibilityRole={onPress ? "button" : "none"}
+      accessibilityLabel={`Category: ${title}. ${points.length} inspiration points available.`}
+      accessibilityHint={onPress ? "Opens details for this category" : ""}
     >
       <View style={styles.cardTitleRow}>
-        <Image source={icon} style={styles.image} />
+        <Image source={icon} 
+        style={styles.image} 
+        accessibilityLabel={`${title} icon`}
+        />
         <Text style={styles.cardTitle}>{title}</Text>
       </View>
 
@@ -19,6 +26,7 @@ function InspirationCard({ title, icon, points, onPress }) {
             <Image
               source={require('../assets/Point.png')}
               style={styles.image2}
+              accessibilityLabel="Bullet point"
             />
             <Text style={styles.pointText}>{item}</Text>
           </View>
@@ -38,8 +46,12 @@ export default function InspirationScreen({ navigation }) {
           <Image
             source={require('../assets/inspiration.png')}
             style={styles.image}
+            accessibilityLabel="Inspiration page icon"
           />
-          <Text style={styles.title}>Inspiration</Text>
+          <Text style={styles.title}
+          accessibilityRole="header"
+          >Inspiration
+          </Text>
         </View>
 
         <Text style={styles.subTitle}>
