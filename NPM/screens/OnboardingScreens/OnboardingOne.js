@@ -7,19 +7,19 @@ export default function OnboardingOne() {
   return (
     <View style={styles.container}>
 
-        <Image
-          source={require('../../assets/Done.png')}
-          style={styles.image} />
-          accessibilityLabel="Done app logo illustration"
+      <Image
+        source={require('../../assets/Done.png')}
+        style={styles.image} />
+      accessibilityLabel="Done app logo illustration"
 
-      <Text 
-      style={styles.title}
-      accessibilityRole="header"
+      <Text
+        style={styles.title}
+        accessibilityRole="header"
       >Welcome to Done.
       </Text>
       <Text style={styles.description}>
-        Welcome to your new productivity companion. 
-        Clear your mind by organizing all your to-dos 
+        Welcome to your new productivity companion.
+        Clear your mind by organizing all your to-dos
         in one place and stay focused on what truly matters.
       </Text>
 

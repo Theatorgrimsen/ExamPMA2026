@@ -6,25 +6,25 @@ export default function OnboardingTwo() {
 
   return (
     <View style={styles.container}>
-      <Image 
-      source={require('../../assets/Action.png')} 
-      // A note on what is going on here:
-      // When giving a relative path, such as the one above, the path is found from where the current file's path
-      // This means that to tell the code to show 'entry.png' which is in the assets folder you need to navigate to the assets folder FROM where this file 'OnboardingTwo' is
-      // In other words, we need to navigate "up" to 'screens' folder, then up to the 'cat-app-with-onboarding' folder
-      // then into the assets folder and to finally reach the entry.png file
-      // the '..' (two dots) is the way to tell the path to go "up"
-      style={styles.image} />
+      <Image
+        source={require('../../assets/Action.png')}
+        // A note on what is going on here:
+        // When giving a relative path, such as the one above, the path is found from where the current file's path
+        // This means that to tell the code to show 'entry.png' which is in the assets folder you need to navigate to the assets folder FROM where this file 'OnboardingTwo' is
+        // In other words, we need to navigate "up" to 'screens' folder, then up to the 'cat-app-with-onboarding' folder
+        // then into the assets folder and to finally reach the entry.png file
+        // the '..' (two dots) is the way to tell the path to go "up"
+        style={styles.image} />
       accessibilityLabel="Illustration of a person organizing tasks"
 
       <Text style={styles.title}
-      accessibilityRole="header"
-      >From thought to action 
+        accessibilityRole="header"
+      >From thought to action
       </Text>
       <Text style={styles.description}>
-         Quickly add tasks with titles and details. Organizing your 
-         day has never been easier—just head to the "Add" tab and start 
-         building your list.
+        Quickly add tasks with titles and details. Organizing your
+        day has never been easier—just head to the "Add" tab and start
+        building your list.
       </Text>
 
       <View style={styles.footer}>

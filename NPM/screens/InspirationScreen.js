@@ -3,9 +3,9 @@ import { View, Text, Image, StyleSheet, ScrollView, Pressable, TouchableOpacity 
 // 🔧 Gjenbrukbar komponent
 function InspirationCard({ title, icon, points, onPress }) {
   return (
-<TouchableOpacity 
-      activeOpacity={onPress ? 0.7 : 1} 
-      onPress={onPress} 
+    <TouchableOpacity
+      activeOpacity={onPress ? 0.7 : 1}
+      onPress={onPress}
       style={styles.card}
       accessible={true}
       accessibilityRole={onPress ? "button" : "none"}
@@ -13,9 +13,9 @@ function InspirationCard({ title, icon, points, onPress }) {
       accessibilityHint={onPress ? "Opens details for this category" : ""}
     >
       <View style={styles.cardTitleRow}>
-        <Image source={icon} 
-        style={styles.image} 
-        accessibilityLabel={`${title} icon`}
+        <Image source={icon}
+          style={styles.image}
+          accessibilityLabel={`${title} icon`}
         />
         <Text style={styles.cardTitle}>{title}</Text>
       </View>
@@ -32,7 +32,7 @@ function InspirationCard({ title, icon, points, onPress }) {
           </View>
         ))}
       </View>
-  </TouchableOpacity> 
+    </TouchableOpacity>
   );
 }
 
@@ -49,7 +49,7 @@ export default function InspirationScreen({ navigation }) {
             accessibilityLabel="Inspiration page icon"
           />
           <Text style={styles.title}
-          accessibilityRole="header"
+            accessibilityRole="header"
           >Inspiration
           </Text>
         </View>
@@ -60,10 +60,10 @@ export default function InspirationScreen({ navigation }) {
       </View>
 
       {/* Cards with pop-ups */}
-     <InspirationCard
+      <InspirationCard
         title="Health & Wellness"
         icon={require('../assets/Health.png')}
-        onPress={() => navigation.navigate('HealthDetail')} 
+        onPress={() => navigation.navigate('HealthDetail')}
         points={[
           "Exercise 3 times a week",
           "Drink 8 glasses of water daily",
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-     fontSize: 28,
+    fontSize: 28,
     fontWeight: '700',
     color: '#1C1C1E',
   },

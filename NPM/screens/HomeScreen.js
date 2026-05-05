@@ -2,31 +2,31 @@ import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ tasks, onToggleTask }) {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}
-        accessibilityRole="header"
+          accessibilityRole="header"
         >Today's Tasks
         </Text>
         <Text style={styles.date}>
-         {new Date().toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-  })}
-</Text>
+          {new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </Text>
       </View>
 
       {tasks.length > 0 ? (
         <View style={styles.taskSection}>
           {tasks.map((task) => (
-            <View 
-            key={task.id} 
-            style={styles.taskCard}>
+            <View
+              key={task.id}
+              style={styles.taskCard}>
               accessible={true}
               accessibilityLabel={`Task: ${task.title}. Status: ${task.completed ? 'Completed' : 'Not completed'}`}
               <View style={styles.taskTitleRow}>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     paddingHorizontal: 25,
-    marginTop: 80, 
+    marginTop: 80,
   },
   header: {
     fontSize: 28,
@@ -158,12 +158,12 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   clock: {
-    width: 80,          
-    height: 80,         
+    width: 80,
+    height: 80,
     marginBottom: 20,   // Space between icon and text
   },
   idleOne: {
-    color: '#A8A29E',   
+    color: '#A8A29E',
     fontSize: 18,
     fontWeight: '500',  // Text a little bit bolder than the text underneath
     marginBottom: 8,
@@ -171,8 +171,8 @@ const styles = StyleSheet.create({
   idleTwo: {
     color: '#D6D3D1',
     fontSize: 15,
-    textAlign: 'center', 
-    paddingHorizontal: 40, 
+    textAlign: 'center',
+    paddingHorizontal: 40,
   },
   taskTitle: {
     flex: 1,
@@ -193,16 +193,16 @@ const styles = StyleSheet.create({
     color: '#A8A29E',
     textDecorationLine: 'line-through',
   },
- navigation: {
+  navigation: {
     flexDirection: 'row',
-    justifyContent: 'space-around', 
+    justifyContent: 'space-around',
     alignItems: 'center',
-    height: 90,                     
-    paddingBottom: 20,             
+    height: 90,
+    paddingBottom: 20,
   },
   inspirenavigation: {
     width: 60,
     height: 60,
-    tintColor: '#79716B', 
+    tintColor: '#79716B',
   }
 });

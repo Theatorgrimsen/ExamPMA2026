@@ -49,7 +49,7 @@ export default function HistoryScreen({ tasks }) {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}
-        accessibilityRole="header"
+          accessibilityRole="header"
         >History
         </Text>
         <Text style={styles.subtitle}>Your completed tasks</Text>

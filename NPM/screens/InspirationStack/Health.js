@@ -9,9 +9,9 @@ export default function HealthScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image source={require('../../assets/Health.png')} 
-             style={styles.icon} />
-            accessibilityLabel="Health and wellness icon"
+          <Image source={require('../../assets/Health.png')}
+            style={styles.icon} />
+          accessibilityLabel="Health and wellness icon"
 
           <Text style={styles.title}>Health & Wellness</Text>
         </View>
@@ -21,10 +21,10 @@ export default function HealthScreen({ navigation }) {
           Health and wellness are important because they affect almost every part of daily life. When you take care of your body and mind, you often get more energy, better concentration, improved sleep, and a stronger sense of balance. Healthy routines can also reduce stress and make it easier to handle school, work, and personal responsibilities.
         </Text>
 
-        <Image 
+        <Image
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
           style={styles.mainImage}
-          accessibilityLabel="Illustration showing physical and mental well-being" 
+          accessibilityLabel="Illustration showing physical and mental well-being"
         />
 
         <Text style={styles.sectionTitle}>Benefits</Text>
@@ -37,13 +37,13 @@ export default function HealthScreen({ navigation }) {
         <Text style={styles.bullet}>This category is here to inspire habits that support your well-being over time. It is not about being perfect, but about building routines that help you feel better in everyday life.</Text>
 
         {/* Custom "X" or Close button */}
-        <TouchableOpacity 
-          style={styles.closeButton} 
+        <TouchableOpacity
+          style={styles.closeButton}
           onPress={() => navigation.goBack()}>
           accessibilityRole="button"
           accessibilityHint="Closes this wellness information screen and returns to the previous page"
           <Text style={styles.closeText}>Close</Text>
-        
+
         </TouchableOpacity>
       </ScrollView>
     </View>

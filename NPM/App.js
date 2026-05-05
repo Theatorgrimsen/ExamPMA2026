@@ -9,9 +9,9 @@ import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
 import InspirationScreen from './screens/InspirationScreen';
 import HistoryScreen from './screens/HistoryScreen';
-import HealthScreen from './screens/InspirationStack/Health'; 
-import CareerScreen from './screens/InspirationStack/Career'; 
-import LearningScreen from './screens/InspirationStack/Learning'; 
+import HealthScreen from './screens/InspirationStack/Health';
+import CareerScreen from './screens/InspirationStack/Career';
+import LearningScreen from './screens/InspirationStack/Learning';
 
 
 // Importing the Onboarding Screens
@@ -54,36 +54,36 @@ function HomeStackScreen({ tasks, onToggleTask }) {
   );
 }
 
-  {/* inspiration stack */}
+{/* inspiration stack */ }
 function InspirationStackScreen() {
   return (
     <InspirationStack.Navigator
-      screenOptions={{ headerShown: false }} 
+      screenOptions={{ headerShown: false }}
     >
-      <InspirationStack.Screen 
-        name="InspirationMain" 
-        component={InspirationScreen} 
+      <InspirationStack.Screen
+        name="InspirationMain"
+        component={InspirationScreen}
       />
-      <InspirationStack.Screen 
-        name="HealthDetail" 
-        component={HealthScreen} 
-        options={{ 
+      <InspirationStack.Screen
+        name="HealthDetail"
+        component={HealthScreen}
+        options={{
           presentation: 'modal', //screens slides from the bottom
-        }} 
+        }}
       />
-      <InspirationStack.Screen 
-        name="CareerDetail" 
-        component={CareerScreen} 
-        options={{ 
-          presentation: 'modal', 
-        }} 
+      <InspirationStack.Screen
+        name="CareerDetail"
+        component={CareerScreen}
+        options={{
+          presentation: 'modal',
+        }}
       />
-      <InspirationStack.Screen 
-        name="LearningDetail" 
-        component={LearningScreen} 
-        options={{ 
-          presentation: 'modal', 
-        }} 
+      <InspirationStack.Screen
+        name="LearningDetail"
+        component={LearningScreen}
+        options={{
+          presentation: 'modal',
+        }}
       />
     </InspirationStack.Navigator>
   );
@@ -112,19 +112,19 @@ export default function App() {
     ]);
   }
 
-function handleToggleTask(taskId) {
-  setTasks((currentTasks) =>
-    currentTasks.map((task) =>
-      task.id === taskId
-        ? {
+  function handleToggleTask(taskId) {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === taskId
+          ? {
             ...task,
             completed: !task.completed,
             completedAt: !task.completed ? new Date().toISOString() : null,
           }
-        : task
-    )
-  );
-}
+          : task
+      )
+    );
+  }
 
   function MainTabs() {
     return (
@@ -152,7 +152,7 @@ function handleToggleTask(taskId) {
             tabBarAccessibilityLabel: 'Home tab',
             tabBarAccessibilityHint: 'Navigates to your daily task list',
             tabBarIcon: ({ focused, color }) => (
-              <Image 
+              <Image
                 source={
                   focused
                     ? require('./assets/HomeFilled.png')
@@ -164,7 +164,7 @@ function handleToggleTask(taskId) {
             ),
           }}
         >
-          {() => <HomeStackScreen tasks={tasks} onToggleTask={handleToggleTask} />} 
+          {() => <HomeStackScreen tasks={tasks} onToggleTask={handleToggleTask} />}
         </Tab.Screen>
 
         {/* ADD tab */}
@@ -175,7 +175,7 @@ function handleToggleTask(taskId) {
             tabBarAccessibilityLabel: 'Add task tab',
             tabBarAccessibilityHint: 'Opens the screen to create a new task',
             tabBarIcon: ({ focused, color }) => (
-              <Image 
+              <Image
                 source={
                   focused
                     ? require('./assets/AddFilled.png')
@@ -194,22 +194,22 @@ function handleToggleTask(taskId) {
 
         {/* history tab */}
         <Tab.Screen
-  name="History"
-  options={{
-    title: 'History',
-    tabBarAccessibilityLabel: 'History tab',
-    tabBarAccessibilityHint: 'Shows your completed tasks',
-    tabBarIcon: ({ color }) => (
-      <Image 
-        source={require('./assets/History.png')} 
-        style={[styles.iconStyle, { tintColor: color }]}
-        accessibilityLabel="History clock icon"
-      />
-    ),
-  }}
->
-  {() => <HistoryScreen tasks={tasks} />}
-</Tab.Screen>
+          name="History"
+          options={{
+            title: 'History',
+            tabBarAccessibilityLabel: 'History tab',
+            tabBarAccessibilityHint: 'Shows your completed tasks',
+            tabBarIcon: ({ color }) => (
+              <Image
+                source={require('./assets/History.png')}
+                style={[styles.iconStyle, { tintColor: color }]}
+                accessibilityLabel="History clock icon"
+              />
+            ),
+          }}
+        >
+          {() => <HistoryScreen tasks={tasks} />}
+        </Tab.Screen>
 
 
         {/* inspire tab */}
@@ -221,7 +221,7 @@ function handleToggleTask(taskId) {
             tabBarAccessibilityLabel: 'Inspiration tab',
             tabBarAccessibilityHint: 'Navigates to wellness and growth ideas',
             tabBarIcon: ({ focused, color }) => (
-              <Image 
+              <Image
                 source={
                   focused
                     ? require('./assets/InspireFilled.png')
@@ -237,7 +237,7 @@ function handleToggleTask(taskId) {
     );
   }
 
-  {/* onboarding */}
+  {/* onboarding */ }
   return (
     <NavigationContainer>
       <OnboardingStack.Navigator

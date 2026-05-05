@@ -6,23 +6,23 @@ export default function OnboardingThree() {
 
   return (
     <View style={styles.container}>
-      <Image 
-      source={require('../../assets/Motivation.png')}
-      style={styles.image} />
+      <Image
+        source={require('../../assets/Motivation.png')}
+        style={styles.image} />
       accessibilityLabel="Illustration showing a person being inspired"
 
       <Text style={styles.title}
-      accessibilityRole="header"
+        accessibilityRole="header"
       >Track progress & find motivation
       </Text>
       <Text style={styles.description}>
-        Check off completed tasks to see how far you've come. If you ever 
+        Check off completed tasks to see how far you've come. If you ever
         feel stuck, visit the "Inspiration" tab to get the boost you need to reach your goals.
       </Text>
 
       <View style={styles.footer}>
         accessible={true}
-        ccessibilityLabel="Onboarding navigation footer"
+        accessibilityLabel="Onboarding navigation footer"
         <TouchableOpacity
           style={styles.footerSide}
           onPress={() => navigation.replace('MainTabs')}

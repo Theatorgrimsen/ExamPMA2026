@@ -9,12 +9,12 @@ export default function CareerScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image 
-             source={require('../../assets/Finance.png')} 
-             style={styles.icon} />
-             accessibilityLabel="Finance icon"
-          <Text 
-          style={styles.title}>
+          <Image
+            source={require('../../assets/Finance.png')}
+            style={styles.icon} />
+          accessibilityLabel="Finance icon"
+          <Text
+            style={styles.title}>
             accessibilityRole="header"
             Career & Finance
           </Text>
@@ -25,9 +25,9 @@ export default function CareerScreen({ navigation }) {
           Career and financial goals can create a stronger sense of stability and direction. When you work toward progress in these areas, you may feel more confident, more independent, and less overwhelmed by uncertainty. Even small actions, like saving a little money or improving a skill, can build momentum over time.
         </Text>
 
-        <Image 
+        <Image
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
-          style={styles.mainImage} 
+          style={styles.mainImage}
           accessibilityLabel="Illustration of career and financial stability"
         />
 
@@ -37,13 +37,13 @@ export default function CareerScreen({ navigation }) {
         <Text style={styles.bullet}>• Better planning and structure</Text>
         <Text style={styles.bullet}>• Reduced stress about money or work</Text>
         <Text style={styles.bullet}>• A clearer sense of progress and purpose</Text>
-        
+
         <Text style={styles.sectionTitle}>What this category is for?</Text>
         <Text style={styles.bullet}>This category helps users focus on goals related to professional growth, money habits, and long-term stability.</Text>
 
         {/* Close button */}
-        <TouchableOpacity 
-          style={styles.closeButton} 
+        <TouchableOpacity
+          style={styles.closeButton}
           onPress={() => navigation.goBack()}>
           accessibilityRole="button"
           accessibilityHint="Closes this screen and returns to the previous page"

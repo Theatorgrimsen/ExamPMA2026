@@ -9,11 +9,11 @@ export default function LearningScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
-             <Image source={require('../../assets/Learning.png')} 
-             style={styles.icon} />
-             accessibilityLabel="Learning and growth icon"
+          <Image source={require('../../assets/Learning.png')}
+            style={styles.icon} />
+          accessibilityLabel="Learning and growth icon"
           <Text style={styles.title}
-          accessibilityRole="header"
+            accessibilityRole="header"
           >Learning & Growth</Text>
         </View>
 
@@ -22,9 +22,9 @@ export default function LearningScreen({ navigation }) {
           Learning and personal growth can help you adapt, discover new interests, and build confidence in your abilities. Growing as a person often means becoming more reflective, more capable, and more open to change. It also helps you keep developing beyond your current routines.
         </Text>
 
-        <Image 
+        <Image
           source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
-          style={styles.mainImage} 
+          style={styles.mainImage}
           accessibilityLabel="Illustration representing personal development and education"
         />
 
@@ -38,8 +38,8 @@ export default function LearningScreen({ navigation }) {
         <Text style={styles.bullet}>This category supports goals connected to education, creativity, new skills, and self-development.</Text>
 
         {/* Custom "X" or Close button */}
-        <TouchableOpacity style={styles.closeButton} 
-        onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.closeButton}
+          onPress={() => navigation.goBack()}>
           accessibilityRole="button"
           accessibilityHint="Closes this learning information screen and returns to the previous page"
           <Text style={styles.closeText}>Close</Text>
