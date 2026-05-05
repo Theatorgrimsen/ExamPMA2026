@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   clock: {
     width: 80,          
     height: 80,         
-    marginBottom: 20,   // Space betweek icon and text
+    marginBottom: 20,   // Space between icon and text
   },
   idleOne: {
     color: '#A8A29E',   
