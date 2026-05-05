@@ -36,7 +36,7 @@ export default function HomeScreen({ tasks, onToggleTask }) {
                     task.completed && styles.checkboxChecked,
                   ]}
                   onPress={() => onToggleTask(task.id)}
-                  hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }} //makes the pressable area bigger
+                  hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }} // Makes the pressable area bigger
                   accessibilityRole="button"
                   accessibilityLabel={
                     task.completed

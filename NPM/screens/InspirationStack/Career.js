@@ -26,7 +26,7 @@ export default function CareerScreen({ navigation }) {
         </Text>
 
         <Image
-          source={require('../../assets/health_detail_image.png')} //standard image for inspiration pop ups
+          source={require('../../assets/health_detail_image.png')} // Standard image for inspiration pop ups
           style={styles.mainImage}
           accessibilityLabel="Illustration of career and financial stability"
         />

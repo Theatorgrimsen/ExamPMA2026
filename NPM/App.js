@@ -9,12 +9,13 @@ import HomeScreen from './screens/HomeScreen';
 import AddTaskScreen from './screens/AddTaskScreen';
 import InspirationScreen from './screens/InspirationScreen';
 import HistoryScreen from './screens/HistoryScreen';
+
+{/* Importing the pop-up Screens */}
 import HealthScreen from './screens/InspirationStack/Health';
 import CareerScreen from './screens/InspirationStack/Career';
 import LearningScreen from './screens/InspirationStack/Learning';
 
-
-// Importing the Onboarding Screens
+{/* Importing the Onboarding Screens */}
 import OnboardingOne from './screens/OnboardingScreens/OnboardingOne';
 import OnboardingTwo from './screens/OnboardingScreens/OnboardingTwo';
 import OnboardingThree from './screens/OnboardingScreens/OnboardingThree';
@@ -38,9 +39,7 @@ const styles = StyleSheet.create({
   }
 });
 
-
-
-// Stack for Home
+{/* Stack for home */}
 function HomeStackScreen({ tasks, onToggleTask }) {
   return (
     <HomeStack.Navigator>
@@ -54,7 +53,7 @@ function HomeStackScreen({ tasks, onToggleTask }) {
   );
 }
 
-{/* inspiration stack */ }
+{/* Inspiration stack */}
 function InspirationStackScreen() {
   return (
     <InspirationStack.Navigator
@@ -68,7 +67,7 @@ function InspirationStackScreen() {
         name="HealthDetail"
         component={HealthScreen}
         options={{
-          presentation: 'modal', //screens slides from the bottom
+          presentation: 'modal', //Screens slides from the bottom
         }}
       />
       <InspirationStack.Screen
@@ -210,7 +209,6 @@ export default function App() {
         >
           {() => <HistoryScreen tasks={tasks} />}
         </Tab.Screen>
-
 
         {/* inspire tab */}
         <Tab.Screen

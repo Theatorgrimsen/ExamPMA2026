@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet, ScrollView, Pressable, TouchableOpacity } from 'react-native';
 
-// 🔧 Gjenbrukbar komponent
 function InspirationCard({ title, icon, points, onPress }) {
   return (
     <TouchableOpacity
