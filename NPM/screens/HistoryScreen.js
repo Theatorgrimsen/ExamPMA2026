@@ -16,10 +16,11 @@ function HistoryTaskCard({ task }) {
   }
 
   return (
-    <View style={styles.taskCard}>
+    <View
+      style={styles.taskCard}
       accessible={true}
       accessibilityLabel={`Completed task: ${task.title}`}
-
+    >
       <View style={styles.taskTitleRow}>
         <View
           style={styles.checkboxChecked}

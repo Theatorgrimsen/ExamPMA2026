@@ -26,9 +26,10 @@ export default function HomeScreen({ tasks, onToggleTask }) {
           {tasks.map((task) => (
             <View
               key={task.id}
-              style={styles.taskCard}>
+              style={styles.taskCard}
               accessible={true}
               accessibilityLabel={`Task: ${task.title}. Status: ${task.completed ? 'Completed' : 'Not completed'}`}
+            >
               <View style={styles.taskTitleRow}>
                 <TouchableOpacity
                   style={[

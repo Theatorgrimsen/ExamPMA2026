@@ -9,8 +9,9 @@ export default function OnboardingOne() {
 
       <Image
         source={require('../../assets/Done.png')}
-        style={styles.image} />
-      accessibilityLabel="Done app logo illustration"
+        style={styles.image}
+        accessibilityLabel="Done app logo illustration"
+      />
 
       <Text
         style={styles.title}
@@ -23,9 +24,11 @@ export default function OnboardingOne() {
         in one place and stay focused on what truly matters.
       </Text>
 
-      <View style={styles.footer}>
+      <View
+        style={styles.footer}
         accessible={true}
         accessibilityLabel="Onboarding navigation footer"
+      >
         <TouchableOpacity
           style={styles.footerSide}
           onPress={() => navigation.replace('MainTabs')}
@@ -35,8 +38,10 @@ export default function OnboardingOne() {
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
 
-        <View style={styles.pagination}>
+        <View
+          style={styles.pagination}
           accessibilityLabel="Page 1 of 3"
+        >
           <View style={[styles.dot, styles.dotActive]} />
           <View style={styles.dot} />
           <View style={styles.dot} />

@@ -8,8 +8,9 @@ export default function OnboardingThree() {
     <View style={styles.container}>
       <Image
         source={require('../../assets/Motivation.png')}
-        style={styles.image} />
-      accessibilityLabel="Illustration showing a person being inspired"
+        style={styles.image}
+        accessibilityLabel="Illustration showing a person being inspired"
+      />
 
       <Text style={styles.title}
         accessibilityRole="header"
@@ -20,9 +21,11 @@ export default function OnboardingThree() {
         feel stuck, visit the "Inspiration" tab to get the boost you need to reach your goals.
       </Text>
 
-      <View style={styles.footer}>
+      <View
+        style={styles.footer}
         accessible={true}
         accessibilityLabel="Onboarding navigation footer"
+      >
         <TouchableOpacity
           style={styles.footerSide}
           onPress={() => navigation.replace('MainTabs')}
@@ -32,8 +35,10 @@ export default function OnboardingThree() {
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
 
-        <View style={styles.pagination}>
+        <View
+          style={styles.pagination}
           accessibilityLabel="Page 3 of 3"
+        >
           <View style={styles.dot} />
           <View style={styles.dot} />
           <View style={[styles.dot, styles.dotActive]} />
