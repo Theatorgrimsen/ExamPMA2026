@@ -10,11 +10,11 @@ export default function LearningScreen({ navigation }) {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
           <Image source={require('../../assets/Learning.png')}
-            style={styles.icon} />
+            style={styles.icon} 
           accessibilityLabel="Learning and growth icon"
+          />
           <Text style={styles.title}
-            accessibilityRole="header"
-          >Learning & Growth</Text>
+            accessibilityRole="header">Learning & Growth</Text>
         </View>
 
         <Text style={styles.sectionTitle}>❤️ Why this matters</Text>
@@ -37,11 +37,12 @@ export default function LearningScreen({ navigation }) {
         <Text style={styles.sectionTitle}>What this category is for?</Text>
         <Text style={styles.bullet}>This category supports goals connected to education, creativity, new skills, and self-development.</Text>
 
-        {/* Custom "X" or Close button */}
+        {/* Close button */}
         <TouchableOpacity style={styles.closeButton}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
           accessibilityRole="button"
           accessibilityHint="Closes this learning information screen and returns to the previous page"
+          >
           <Text style={styles.closeText}>Close</Text>
         </TouchableOpacity>
       </ScrollView>

@@ -11,11 +11,13 @@ export default function CareerScreen({ navigation }) {
         <View style={styles.header}>
              <Image 
              source={require('../../assets/Finance.png')} 
-             style={styles.icon} />
+             style={styles.icon} 
              accessibilityLabel="Finance icon"
+             />
           <Text 
-          style={styles.title}>
+            style={styles.title}
             accessibilityRole="header"
+            >
             Career & Finance
           </Text>
         </View>
@@ -44,9 +46,10 @@ export default function CareerScreen({ navigation }) {
         {/* Close button */}
         <TouchableOpacity 
           style={styles.closeButton} 
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
           accessibilityRole="button"
           accessibilityHint="Closes this screen and returns to the previous page"
+          >
           <Text style={styles.closeText}>Close</Text>
         </TouchableOpacity>
       </ScrollView>

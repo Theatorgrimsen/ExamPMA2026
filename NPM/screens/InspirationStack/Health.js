@@ -10,8 +10,9 @@ export default function HealthScreen({ navigation }) {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.header}>
           <Image source={require('../../assets/Health.png')}
-            style={styles.icon} />
+            style={styles.icon} 
           accessibilityLabel="Health and wellness icon"
+          />
 
           <Text style={styles.title}>Health & Wellness</Text>
         </View>
@@ -39,9 +40,10 @@ export default function HealthScreen({ navigation }) {
         {/* Custom "X" or Close button */}
         <TouchableOpacity
           style={styles.closeButton}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
           accessibilityRole="button"
           accessibilityHint="Closes this wellness information screen and returns to the previous page"
+          >
           <Text style={styles.closeText}>Close</Text>
 
         </TouchableOpacity>
